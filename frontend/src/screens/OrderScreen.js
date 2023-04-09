@@ -9,7 +9,6 @@ import { useParams } from "react-router-dom";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { getOrderDetails, payOrder } from "../actions/orderActions";
-import { ListGroup } from "react-bootstrap";
 import { ORDER_PAY_RESET } from "../constants/orderConstants";
 
 const OrderScreen = () => {
@@ -54,12 +53,16 @@ const OrderScreen = () => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, orderId, order]);
+  }, [dispatch, orderId, order, successPay]);
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
     dispatch(payOrder(orderId, paymentResult));
   };
+
+  const date = new Date();
+  const options = { timeZone: "Asia/Kolkata", hour12: true };
+  const formattedDate = date.toLocaleString("en-IN", options);
 
   return loading ? (
     <Loader />
@@ -107,7 +110,7 @@ const OrderScreen = () => {
                 {order.paymentMethod}
               </p>
               {order.isPaid ? (
-                <Message variant="success">Paid on {order.paidAt}</Message>
+                <Message variant="success">Paid on {formattedDate}</Message>
               ) : (
                 <Message variant="danger">Not Paid</Message>
               )}

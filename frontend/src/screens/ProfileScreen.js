@@ -6,7 +6,7 @@ import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants";
-
+import { listMyOrders } from "../actions/orderActions";
 const ProfileScreen = () => {
   const [Name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,37 +27,16 @@ const ProfileScreen = () => {
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
   const { success } = userUpdateProfile;
 
-  // useEffect(() => {
-  //   if (!userInfo) {
-  //     Navigate("/login");
-  //   } else {
-  //     if (!user.Name) {
-  //       dispatch(getUserDetails("profile"));
-  //     } else {
-  //       if (!user || !user.Name || success) {
-  //         dispatch({ type: USER_UPDATE_PROFILE_RESET });
-  //         dispatch(getUserDetails("profile"));
-  //       }
-  //       setName(user.Name);
-  //       setEmail(user.email);
-  //     }
-  //   }
-  // }, [dispatch, Navigate, userInfo, user, success]);
+  const orderMyList = useSelector((state) => state.orderMyList);
+  const { loading: loaddinOrders, error: errorOrders, orders } = orderMyList;
 
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
-  //   if (password !== confirmPassword) {
-  //     setMessage("Passwords do not match");
-  //   } else {
-  //     dispatch(updateUserProfile({ id: user._id, Name, email, password }));
-  //   }
-  // };
   useEffect(() => {
     if (!userInfo) {
       Navigate("/login");
     } else {
       if (!user || !user.Name) {
         dispatch(getUserDetails("profile"));
+        dispatch(listMyOrders());
       } else {
         setName(user.Name);
         setEmail(user.email);
@@ -68,6 +47,7 @@ const ProfileScreen = () => {
   useEffect(() => {
     if (success) {
       dispatch(getUserDetails("profile"));
+
       dispatch({ type: USER_UPDATE_PROFILE_RESET });
       setMessage("Profile Updated!");
       setMessageVariant("success");
@@ -177,6 +157,69 @@ const ProfileScreen = () => {
 
       <div class="md:w-3/4 font-bold mt-8">
         <h2 class="text-2xl font-bold">My Orders</h2>
+        {loaddinOrders ? (
+          <Loader />
+        ) : errorOrders ? (
+          <Message variant="danger">{errorOrders}</Message>
+        ) : (
+          <table class="w-full border-collapse border border-gray-300 shadow-sm">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="px-6 py-3 text-left font-medium text-gray-700">
+                  ID
+                </th>
+                <th class="px-6 py-3 text-left font-medium text-gray-700">
+                  ID
+                </th>
+                <th class="px-6 py-3 text-left font-medium text-gray-700">
+                  DATE
+                </th>
+                <th class="px-6 py-3 text-left font-medium text-gray-700">
+                  TOTAL
+                </th>
+                <th class="px-6 py-3 text-left font-medium text-gray-700">
+                  PAID
+                </th>
+                <th class="px-6 py-3 text-left font-medium text-gray-700">
+                  DELIVERED
+                </th>
+                <th class="px-6 py-3 text-left font-medium text-gray-700"></th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-300">
+              {orders.map((order) => (
+                <tr key={user._id}>
+                  <td class="px-6 py-4">{order._id}</td>
+                  <td class="px-6 py-4">{order.createdAt.substring(0, 10)}</td>
+                  <td class="px-6 py-4">{order.totalPrice}</td>
+                  <td class="px-6 py-4">
+                    {order.isPaid ? (
+                      order.paidAt.substring(0, 10)
+                    ) : (
+                      <i class="fas fa-times text-red-500"></i>
+                    )}
+                  </td>
+
+                  <td class="px-6 py-4">
+                    {order.isDelivered ? (
+                      order.deliveredAt.substring(0, 10)
+                    ) : (
+                      <i class="fas fa-times text-red-500"></i>
+                    )}
+                  </td>
+
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <Link to={`order/${order._id}`}>
+                      <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-1 px-2 rounded">
+                        Details
+                      </button>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );
