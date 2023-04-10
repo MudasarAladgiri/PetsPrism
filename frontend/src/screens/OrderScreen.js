@@ -93,7 +93,7 @@ const OrderScreen = () => {
     <Message variant="danger">{error}</Message>
   ) : (
     <>
-      <h2 className="text-3xl underline font-bold mt-4">Order {order._id}</h2>
+      {/* <h2 className="text-3xl underline font-bold mt-4">Order {order._id}</h2> */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="w-full md:w-8/12">
           <ul className="list-none">
@@ -115,7 +115,7 @@ const OrderScreen = () => {
               </p>
               {order.isDelivered ? (
                 <Message variant="success">
-                  Delivered on {order.deliveredAt}
+                  Delivered on {formattedDate}
                 </Message>
               ) : (
                 <Message variant="danger">Not Delivered</Message>
