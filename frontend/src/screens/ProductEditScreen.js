@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +19,7 @@ const ProductEditScreen = () => {
   const [description, setDescription] = useState("");
   const [user, setUser] = useState("");
   const [numberofreviews, setNumberofReviews] = useState(0);
+  const [uploading, setUploading] = useState(false);
 
   const { id: productId } = useParams();
   const dispatch = useDispatch();
@@ -52,6 +54,29 @@ const ProductEditScreen = () => {
       }
     }
   }, [dispatch, Navigate, productId, product, successUpdate]);
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    setUploading(true);
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post("/api/upload", formData, config);
+
+      setImage(data);
+      setUploading(false);
+    } catch (error) {
+      console.error(error);
+      setUploading(false);
+    }
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -136,6 +161,24 @@ const ProductEditScreen = () => {
                 onChange={(e) => setImage(e.target.value)}
                 required
               />
+              <div class="relative flex flex-col items-center">
+                <label
+                  for="image-file"
+                  class="w-full flex flex-col items-center justify-center px-4 py-2 bg-white text-gray-700 rounded-md shadow-sm tracking-wide border border-gray-300 cursor-pointer hover:bg-gray-50 hover:text-gray-800"
+                >
+                  <i class="fas fa-upload"></i>
+                  <span class="mt-2 text-sm leading-normal">Choose File</span>
+                  <input
+                    id="image-file"
+                    name="image"
+                    type="file"
+                    class="hidden"
+                    onChange={uploadFileHandler}
+                  />
+                </label>
+              </div>
+
+              {uploading && <Loader />}
             </div>
 
             <div className="flex flex-col space-x-12">

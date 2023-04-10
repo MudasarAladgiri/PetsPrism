@@ -207,7 +207,7 @@ const ProfileScreen = () => {
                   </td>
 
                   <td class="px-6 py-4 whitespace-nowrap">
-                    <Link to={`order/${order._id}`}>
+                    <Link to={`/order/${order._id}`}>
                       <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-1 px-2 rounded">
                         Details
                       </button>
