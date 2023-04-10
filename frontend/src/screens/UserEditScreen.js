@@ -51,7 +51,7 @@ const UserEditScreen = () => {
   return (
     <>
       <FormContainer>
-        <Link to="/admin/userlist" className="btn byn-light my-3"></Link>
+        <Link to="/admin/userlist" className="btn byn-light my-3 mt-5"></Link>
         <h1 className="text-2xl font-bold mt-8">Edit User</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}

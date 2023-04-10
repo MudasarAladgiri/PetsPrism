@@ -22,10 +22,11 @@ const Header = () => {
     dispatch(logout());
   };
   return (
-    <nav className="bg-gray-800 text-white">
+    <nav className="bg-white text-black">
       <div className="container mx-auto flex items-center justify-between h-16">
         <Link to="/" className="text-2xl font-bold">
-          Petsprism
+          <span className="text-black">Pets</span>
+          <span className="text-blue-400">prism</span>
         </Link>
         <div className="flex">
           <Link to="/cart" className="px-4 py-2">

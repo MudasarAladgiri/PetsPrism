@@ -169,9 +169,6 @@ const ProfileScreen = () => {
                   ID
                 </th>
                 <th class="px-6 py-3 text-left font-medium text-gray-700">
-                  ID
-                </th>
-                <th class="px-6 py-3 text-left font-medium text-gray-700">
                   DATE
                 </th>
                 <th class="px-6 py-3 text-left font-medium text-gray-700">
@@ -183,6 +180,7 @@ const ProfileScreen = () => {
                 <th class="px-6 py-3 text-left font-medium text-gray-700">
                   DELIVERED
                 </th>
+
                 <th class="px-6 py-3 text-left font-medium text-gray-700"></th>
               </tr>
             </thead>
