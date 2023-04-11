@@ -38,7 +38,7 @@ const UserListScreen = () => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto container">
           <table class="table-auto w-full border-collapse border border-gray-300 shadow-sm">
             <thead>
               <tr class="bg-gray-100">

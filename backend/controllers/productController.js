@@ -71,6 +71,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     countInstock,
     numberofreviews,
     description,
+    rating,
   } = req.body;
 
   const product = await Product.findById(req.params.id);
@@ -84,6 +85,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.countInstock = countInstock;
     product.numberofreviews = numberofreviews;
     product.description = description;
+    product.rating = rating;
 
     const updatedProduct = await product.save();
     res.json(updatedProduct);
@@ -92,10 +94,19 @@ const updateProduct = asyncHandler(async (req, res) => {
     throw new Error("Product not found");
   }
 });
+//@desc get top rated products
+//@route  GET/api/products/top
+//@access  Public
+
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(3);
+  res.json(products);
+});
 export {
   getProducts,
   getProductById,
   deleteProduct,
   createProduct,
   updateProduct,
+  getTopProducts,
 };

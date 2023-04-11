@@ -39,7 +39,7 @@ const ProductScreen = () => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <div className="lg:flex justify-center items-start">
+        <div className="lg:flex justify-center items-start container">
           <div className="lg:w-1/2 p-5">
             <img
               src={product.image}

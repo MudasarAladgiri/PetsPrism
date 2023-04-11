@@ -68,7 +68,7 @@ const ProductListScreen = () => {
   };
   return (
     <>
-      <div class="flex items-center">
+      <div class="flex items-center container">
         <div class="flex-1">
           <h1 class="text-xl font-bold">Products</h1>
         </div>

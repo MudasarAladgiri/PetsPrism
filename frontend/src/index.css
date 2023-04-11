@@ -20,3 +20,7 @@ main {
 .rating span {
   margin: 0.1rem;
 }
+.container {
+  background-image: url("../public/images/bg 3.png");
+  background-repeat: repeat;
+}

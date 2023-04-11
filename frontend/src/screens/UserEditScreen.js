@@ -60,7 +60,7 @@ const UserEditScreen = () => {
         ) : error ? (
           <Message variant="danger">{error}</Message>
         ) : (
-          <form onSubmit={submitHandler}>
+          <form onSubmit={submitHandler} className="container">
             <div className="mb-4">
               <label
                 className="block text-gray-700 font-bold mb-2"

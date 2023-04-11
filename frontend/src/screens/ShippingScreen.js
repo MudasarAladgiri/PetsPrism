@@ -28,7 +28,7 @@ const ShippingScreen = () => {
     <FormContainer>
       <CheckoutSteps step1 step2 />
       <h1 className="text-2xl font-bold mt-8 mb-3">Shipping</h1>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className="container">
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
             Address

@@ -18,6 +18,10 @@ import UserEditScreen from "./screens/UserEditScreen";
 import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import OrderListScreen from "./screens/OrderListScreen";
+import FoodScreen from "./screens/FoodScreen";
+import ToyScreen from "./screens/ToyScreen";
+import MedicineScreen from "./screens/MedicineScreen";
+
 function App() {
   return (
     <>
@@ -26,6 +30,7 @@ function App() {
         <main className="flex justify-center">
           <div className="container mx-auto">
             <Routes>
+              <Route path="/search/:keyword" element={<Homescreen />} />
               <Route path="/" element={<Homescreen />} />
               <Route path="/login" element={<LoginScreen />} />
               <Route path="/register" element={<RegisterScreen />} />
@@ -48,6 +53,9 @@ function App() {
               <Route path="/profile" element={<ProfileScreen />} />
               <Route path="/product/:id" element={<ProductScreen />} />
               <Route path="/cart/:id?" element={<CartScreen />} />
+              <Route path="/food" element={<FoodScreen />} />
+              <Route path="/toy" element={<ToyScreen />} />
+              <Route path="/medicine" element={<MedicineScreen />} />
             </Routes>
           </div>
         </main>

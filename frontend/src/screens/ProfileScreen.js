@@ -64,7 +64,7 @@ const ProfileScreen = () => {
     }
   };
   return (
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap container">
       <div class="md:w-1/4">
         <h2 className="text-2xl font-bold mt-8">User Profile</h2>
         {message && <Message variant={messageVariant}>{message}</Message>}

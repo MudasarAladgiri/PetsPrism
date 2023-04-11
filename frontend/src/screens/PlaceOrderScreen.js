@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import Message from "../components/Message";
-import Loader from "../components/Loader";
 import { createOrder } from "../actions/orderActions";
 const PlaceOrderScreen = () => {
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ const PlaceOrderScreen = () => {
 
   // shipinng
   cart.shippingPrice = cart.itemsPrice > 100 ? 0 : 100;
-  cart.taxPrice = Number((0.15 * cart.itemsPrice).toFixed(2));
+  cart.taxPrice = Number((0.18 * cart.itemsPrice).toFixed(2));
   cart.totalPrice = (
     Number(cart.itemsPrice) +
     Number(cart.shippingPrice) +
@@ -33,7 +32,7 @@ const PlaceOrderScreen = () => {
     if (success) {
       Navigate(`/order/${order._id}`);
     }
-  }, [Navigate, success]);
+  }, [Navigate, success, order]);
 
   const placeOrderHandler = () => {
     dispatch(
@@ -51,7 +50,7 @@ const PlaceOrderScreen = () => {
   return (
     <>
       <CheckoutSteps step1 step2 step3 step4 />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="w-full md:w-8/12">
           <ul className="list-none">
             <li className="border-b border-gray-300 mb-4 pb-4">

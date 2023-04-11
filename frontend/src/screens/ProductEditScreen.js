@@ -19,6 +19,8 @@ const ProductEditScreen = () => {
   const [description, setDescription] = useState("");
   const [user, setUser] = useState("");
   const [numberofreviews, setNumberofReviews] = useState(0);
+  const [rating, setRating] = useState(0);
+
   const [uploading, setUploading] = useState(false);
 
   const { id: productId } = useParams();
@@ -51,6 +53,7 @@ const ProductEditScreen = () => {
         setDescription(product.description);
         setUser(product.user);
         setNumberofReviews(product.numberofreviews);
+        setNumberofReviews(product.rating);
       }
     }
   }, [dispatch, Navigate, productId, product, successUpdate]);
@@ -91,6 +94,7 @@ const ProductEditScreen = () => {
         description,
         user,
         numberofreviews,
+        rating,
       })
     );
   };
@@ -111,7 +115,7 @@ const ProductEditScreen = () => {
         ) : error ? (
           <Message variant="danger">{error}</Message>
         ) : (
-          <form onSubmit={submitHandler}>
+          <form onSubmit={submitHandler} className="container">
             <div className="mb-4">
               <label
                 className="block text-gray-700 font-bold mb-2"
@@ -231,6 +235,7 @@ const ProductEditScreen = () => {
                 required
               />
             </div>
+
             <div className="mb-4">
               <label
                 className="block text-gray-700 font-bold mb-2"
@@ -260,6 +265,23 @@ const ProductEditScreen = () => {
                 placeholder="Enter Number of Reviews"
                 value={numberofreviews}
                 onChange={(e) => setNumberofReviews(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="flex flex-col space-x-12">
+              <label
+                className="block text-gray-700 font-bold mb-2"
+                htmlFor="rating"
+              >
+                Rating
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="number"
+                placeholder="Enter count In stock"
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
                 required
               />
             </div>

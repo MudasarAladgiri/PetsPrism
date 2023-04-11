@@ -73,7 +73,15 @@ const OrderScreen = () => {
         setSdkReady(true);
       }
     }
-  }, [dispatch, orderId, order, successPay, successDeliver]);
+  }, [
+    dispatch,
+    orderId,
+    order,
+    successPay,
+    successDeliver,
+    Navigate,
+    userInfo,
+  ]);
 
   const successPaymentHandler = (paymentResult) => {
     console.log(paymentResult);
@@ -94,7 +102,7 @@ const OrderScreen = () => {
   ) : (
     <>
       {/* <h2 className="text-3xl underline font-bold mt-4">Order {order._id}</h2> */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="w-full md:w-8/12">
           <ul className="list-none">
             <li className="border-b border-gray-300 mb-4 pb-4">

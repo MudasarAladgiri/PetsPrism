@@ -29,8 +29,8 @@ const PaymentScreen = () => {
     <FormContainer>
       <CheckoutSteps step1 step2 step3 />
       <h1 className="text-2xl font-bold mt-8 mb-3">Payment Method</h1>
-      <form onSubmit={submitHandler}>
-        <div className="my-4">
+      <form onSubmit={submitHandler} className="container">
+        <div className="my-4 ">
           <label as="legend" className="block font-medium mb-2">
             Select Method
           </label>
@@ -51,21 +51,21 @@ const PaymentScreen = () => {
             </div>
           </div>
 
-          {/* <div className="flex flex-col space-y-2 mt-5">
+          <div className="flex flex-col space-y-2 mt-5">
             <div className="flex items-center">
               <input
                 className="mr-2"
                 type="radio"
-                id="Stripe"
+                id="RazorPay"
                 name="paymentMethod"
-                value="Stripe"
+                value="RazorPay"
                 onChange={(e) => setPaymentMethod(e.target.value)}
               />
-              <label for="Paypal" className="font-medium">
-                Paypal or Credit Card
+              <label for="RazorPay" className="font-medium">
+                Razor Pay
               </label>
             </div>
-          </div> */}
+          </div>
         </div>
 
         {/* <Form.Group>

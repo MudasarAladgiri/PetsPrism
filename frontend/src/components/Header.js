@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userActions";
+import SearchBox from "./SearchBox";
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showMenu1, setShowMenu1] = useState(false);
+  const [showMenu2, setShowMenu2] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -13,6 +15,10 @@ const Header = () => {
   };
   const toggleMenu1 = () => {
     setShowMenu1(!showMenu1);
+  };
+
+  const toggleMenu2 = () => {
+    setShowMenu2(!showMenu2);
   };
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -26,13 +32,53 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between h-16">
         <Link to="/" className="text-2xl font-bold">
           <span className="text-black">Pets</span>
-          <span className="text-blue-400">prism</span>
+          <span className="text-blue-400">Prism</span>
         </Link>
         <div className="flex">
           <Link to="/cart" className="px-4 py-2">
             <i className="fas fa-shopping-cart"></i> Cart
           </Link>
 
+          {/* Category */}
+          <div className="relative">
+            <button
+              className="block px-4 py-2 hover:text-gray-300 transition duration-150 ease-in-out focus:outline-none focus:bg-gray-600"
+              onClick={toggleMenu2}
+            >
+              Category <i className="fa fa-caret-down"></i>
+            </button>
+            {showMenu2 && (
+              <div className="absolute bg-white rounded-lg shadow-lg py-2 mt-1 text-left">
+                <Link
+                  to="/food"
+                  onClick={toggleMenu2}
+                  className="block px-4 py-2 text-gray-800 hover:bg-gray-800 hover:text-white transition duration-150 ease-in-out"
+                >
+                  Foods
+                </Link>
+                <Link
+                  to="/toy"
+                  onClick={() => {
+                    toggleMenu2();
+                  }}
+                  className="block px-4 py-2 text-gray-800 hover:bg-gray-800 hover:text-white transition duration-150 ease-in-out"
+                >
+                  Toys
+                </Link>
+                <Link
+                  to="/medicine"
+                  onClick={() => {
+                    toggleMenu2();
+                  }}
+                  className="block px-4 py-2 text-gray-800 hover:bg-gray-800 hover:text-white transition duration-150 ease-in-out"
+                >
+                  Medicine
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* user */}
           {userInfo ? (
             <div className="relative">
               <button
@@ -68,6 +114,7 @@ const Header = () => {
             </Link>
           )}
 
+          {/* user  as admin */}
           {userInfo && userInfo.isAdmin && (
             <div className="relative">
               <button

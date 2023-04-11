@@ -32,7 +32,7 @@ const LoginScreen = () => {
 
   return (
     <FormContainer>
-      <h1 className="text-2xl font-bold mt-8">Sign In</h1>
+      <h1 className="text-2xl font-bold mt-8 container">Sign In</h1>
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <form onSubmit={submitHandler}>
