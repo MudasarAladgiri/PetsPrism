@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     // <footer className="bg-gray-800 text-white py- ">
@@ -22,7 +24,7 @@ const Footer = () => {
           <ul class="list-none">
             <li class="mb-2">Help & information</li>
             <li class="mb-2">
-              <NavLink to="About">About us</NavLink>
+              <Link to="/About">About us</Link>
             </li>
             <li class="mb-2">Privacy Policy</li>
             <li class="mb-2">Terms & Condition</li>
@@ -37,6 +39,11 @@ const Footer = () => {
             newsletter.
           </p>
         </div>
+        <ul class="list-none">
+          <li class="mb-2 font-bold">
+            <Link to="/contact">Contact us</Link>
+          </li>
+        </ul>
       </div>
       <div class="border-t border-gray-800">
         <div class="container mx-auto px-4">

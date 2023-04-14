@@ -21,6 +21,8 @@ import OrderListScreen from "./screens/OrderListScreen";
 import FoodScreen from "./screens/FoodScreen";
 import ToyScreen from "./screens/ToyScreen";
 import MedicineScreen from "./screens/MedicineScreen";
+import AboutScreen from "./screens/AboutScreen";
+import SearchBox from "./screens/SearchBox";
 
 function App() {
   return (
@@ -30,8 +32,10 @@ function App() {
         <main className="flex justify-center">
           <div className="container mx-auto">
             <Routes>
-              <Route path="/search/:keyword" element={<Homescreen />} />
+              {/* <Route path="/search/:keyword" element={<Homescreen />} /> */}
               <Route path="/" element={<Homescreen />} />
+              <Route path="/search/:keyword" element={<SearchBox />} />
+
               <Route path="/login" element={<LoginScreen />} />
               <Route path="/register" element={<RegisterScreen />} />
               <Route path="/login/shipping" element={<ShippingScreen />} />
@@ -56,6 +60,7 @@ function App() {
               <Route path="/food" element={<FoodScreen />} />
               <Route path="/toy" element={<ToyScreen />} />
               <Route path="/medicine" element={<MedicineScreen />} />
+              <Route path="/About" element={<AboutScreen />} />
             </Routes>
           </div>
         </main>

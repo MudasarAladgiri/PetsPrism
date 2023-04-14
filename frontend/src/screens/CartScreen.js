@@ -35,9 +35,9 @@ const CartScreen = () => {
     <div className=" container mx-auto mt-8 ">
       <h1 className="text-2xl font-bold mb-4">Shopping Cart</h1>
 
-      <div className="flex justify-end mt-8 ">
+      <div className="flex justify-end mt-8 shadow-lg">
         <div className="flex flex-col w-full max-w-md">
-          <div className="bg-white p-4 rounded-lg border border-gray-300">
+          <div className="bg-white p-4 rounded-lg border border-gray-300 shadow-md">
             <h2 className="text-lg font-medium mb-4">
               Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}{" "}
               items)
@@ -50,7 +50,7 @@ const CartScreen = () => {
             </h3>
             <button
               type="button"
-              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-lg w-full"
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-lg w-full transition duration-300"
               disabled={cartItems.length === 0}
               onClick={checkoutHandler}
             >
@@ -82,7 +82,7 @@ const CartScreen = () => {
                 <div className="w-1/4">
                   <Link
                     to={`/product/${item.product}`}
-                    className="text-gray-900  hover:underline"
+                    className="text-gray-900 hover:underline transition duration-300"
                   >
                     {item.Name}
                   </Link>
@@ -118,66 +118,6 @@ const CartScreen = () => {
         </div>
       )}
     </div>
-
-    // <Row>
-    //   <Col md={8}>
-    //   <h1>Shopping Cart</h1>
-    //   {cartItems.length===0? <Message>Your cart is empty <Link to="/">Go Back</Link></Message>:(
-    //     <ListGroup variant="flush">
-    //       {cartItems.map(item=>(
-    //         <ListGroup.item key={item.product}>
-    //           <Row>
-    //             <Col md={2}>
-    //             <image src={item.image} alt={item.Name} fluid rounded></image>
-    //             </Col>
-    //             <Col md={3}>
-    //             <Link to={`/product/${item.product}`}>{item.Name}</Link>
-    //             </Col>
-    //             <Col ms={2}>
-    //             ${item.price}
-    //             </Col>
-
-    //             <Col ms={2}>
-    //           <Form.Control
-    //           as ="select"
-    //           value={item.qty}
-    //           onChange={(e) => dispatch(addToCart(item.product,Number(e.target.value)))}>
-    //             {[...Array(item.countInstock).keys()].map((x)=>(
-    //             <option key={x+1 } value={x+1}>
-    //              {x+1}
-    //            </option>
-    //             ))}
-    //           </Form.Control>
-    //             </Col>
-
-    //             <Col md={2}>
-    //             <Button type="button"
-    //             variant="light"
-    //             onClick={()=>removeFromCartHandler(item.product)}>
-    //               <i className="fas fa-trash"></i>
-    //             </Button>
-    //             </Col>
-    //           </Row>
-    //         </ListGroup.item>
-    //       ))}
-    //     </ListGroup>
-    //   )}
-    //   </Col>
-    //   <Col md={2}>
-    //       <Card>
-    //         <ListGroup variant="flush">
-    //               <ListGroup.item>
-    //                 <h2>Subtotal ({cartItems.reduce((acc,item) => acc+item.qty, 0)}) items</h2>
-    //                 ${cartItems.reduce((acc,item)=>acc+item.qty*item.price,0).toFixed(2)}
-    //               </ListGroup.item>
-    //               <ListGroup.item>
-    //                 <Button type="button" className="btn-block"
-    //                 disabled={cartItems.length===0} onClick={checkoutHandler}> Proceed to Checkout</Button>
-    //               </ListGroup.item>
-    //         </ListGroup>
-    //       </Card>
-    //   </Col>
-    // </Row>
   );
 };
 

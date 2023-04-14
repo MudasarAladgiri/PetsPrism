@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userActions";
@@ -28,12 +29,16 @@ const Header = () => {
     dispatch(logout());
   };
   return (
-    <nav className="bg-white text-black">
+    <nav className="bg-white text-black mb-36 mt-2">
       <div className="container mx-auto flex items-center justify-between h-16">
         <Link to="/" className="text-2xl font-bold">
           <span className="text-black">Pets</span>
           <span className="text-blue-400">Prism</span>
         </Link>
+        <Routes>
+          <Route render={(Navigate) => <SearchBox Navigate={Navigate} />} />
+        </Routes>
+        {/* <SearchBox /> */}
         <div className="flex">
           <Link to="/cart" className="px-4 py-2">
             <i className="fas fa-shopping-cart"></i> Cart
