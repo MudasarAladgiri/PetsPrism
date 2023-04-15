@@ -23,7 +23,7 @@ import ToyScreen from "./screens/ToyScreen";
 import MedicineScreen from "./screens/MedicineScreen";
 import AboutScreen from "./screens/AboutScreen";
 import SearchBox from "./screens/SearchBox";
-
+import ContactScreen from "./screens/ContactScreen";
 function App() {
   return (
     <>
@@ -35,6 +35,7 @@ function App() {
               {/* <Route path="/search/:keyword" element={<Homescreen />} /> */}
               <Route path="/" element={<Homescreen />} />
               <Route path="/search/:keyword" element={<SearchBox />} />
+              <Route path="/contact" element={<ContactScreen />} />
 
               <Route path="/login" element={<LoginScreen />} />
               <Route path="/register" element={<RegisterScreen />} />

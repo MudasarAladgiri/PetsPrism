@@ -62,7 +62,7 @@ const PaymentScreen = () => {
                 onChange={(e) => setPaymentMethod(e.target.value)}
               />
               <label for="RazorPay" className="font-medium">
-                Razor Pay
+                Razor Pay(Coming Soon)
               </label>
             </div>
           </div>

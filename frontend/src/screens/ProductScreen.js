@@ -57,12 +57,10 @@ const ProductScreen = () => {
 
   return (
     <>
-      <Link
-        className="text-blue-600 font-semibold hover:underline mb-3 inline-block"
-        to="/"
-      >
-        Go back
-      </Link>
+      <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
+        <Link to="/">Go back</Link>
+      </button>
+
       {loading ? (
         <Loader />
       ) : error ? (
@@ -121,7 +119,7 @@ const ProductScreen = () => {
                   onClick={addToCartHandler}
                   className={`px-6 py-3 rounded-full ${
                     product.countInstock > 0
-                      ? "bg-blue-500 hover:bg-blue-600 text-white"
+                      ? "bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110"
                       : "bg-gray-400 cursor-not-allowed"
                   }`}
                   type="button"
@@ -214,86 +212,6 @@ const ProductScreen = () => {
         </>
       )}
     </>
-
-    // <>
-    // <Link className="btn btn-light my-3" to="/">
-    //   Go back
-    // </Link>
-    // <Row>
-    //  <Col md={6}>
-    //  <image src={product.image} alt={product.Name} fluid></image>
-    //  </Col>
-    //  <Col md={6}>
-    //   <ListGroup variant="flush">
-    //     <ListGroup.item>
-    //         <h2>{product.Name}</h2>
-    //     </ListGroup.item>
-    //     <ListGroup.item>
-    //     <Rating
-    //         value={product.rating}
-    //         text={`${product.numberofreviews} reviews`}
-    //       />
-    //     </ListGroup.item>
-    //     <ListGroup.item>
-    //         Price:${product.price}
-    //     </ListGroup.item>
-    //     <ListGroup.item>
-    //         Description:${product.description}
-    //     </ListGroup.item>
-    //   </ListGroup>
-    //  </Col>
-    //  <Col md={3}>
-    //  <Card>
-    //     <ListGroup variant="flush">
-    //         <ListGroup.item>
-    //             <Row>
-    //                  <Col>
-    //                  Price:
-    //                  </Col>
-    //                  <Col>
-    //                  <strong>{product.price}</strong>
-    //                  </Col>
-    //             </Row>
-    //             </ListGroup.item>
-    //             <ListGroup.item>
-    //             <Row>
-    //                  <Col>
-    //                  Status:
-    //                  </Col>
-    //                  <Col>
-    //                  <strong>{product.countInstock> 0 ? 'in Stock' : 'Out of Stock'}</strong>
-    //                  </Col>
-    //             </Row>
-    //             </ListGroup.item>
-    //  {product.countInstock > 0 &&
-    //   <ListGroup.item>
-    //   <Row>
-    //   <Col>Qty</Col>
-    //   <Col>
-    //   <Form.Control as ="select" value={qty} onChange={(e) =>
-    //   setQty(e.target.value)}>
-    //   {[...Array(product.countInstock).keys()].map((x)=>(
-    //     <option key={x+1 } value={x+1}>
-    //       {x+1}
-    //     </option>
-    //   ))}
-    //   </Form.Control>
-    //   </Col>
-    //   </Row>
-    //   </ListGroup.item>
-    // }
-    //             <ListGroup.item>
-    //                 <Button className='btn-block'
-    //                 type="buttton"
-    //                 disabled={product.countInstock===0}>
-    //                     Add to Cart
-    //                 </Button>
-    //             </ListGroup.item>
-    //     </ListGroup>
-    //  </Card>
-    //  </Col>
-    // </Row>
-    // </>
   );
 };
 

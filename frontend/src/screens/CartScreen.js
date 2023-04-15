@@ -32,7 +32,7 @@ const CartScreen = () => {
     Navigate("/login?redirect=shipping");
   };
   return (
-    <div className=" container mx-auto mt-8 ">
+    <div className=" container mx-auto mt-8 flex flex-col">
       <h1 className="text-2xl font-bold mb-4">Shopping Cart</h1>
 
       <div className="flex justify-end mt-8 shadow-lg">
